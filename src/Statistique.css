@@ -1,0 +1,28 @@
+.statistique {
+  background-color: #ffffff;
+  border: 2px solid #1a6b3c;
+  border-radius: 12px;
+  padding: 24px 32px;
+  text-align: center;
+  min-width: 160px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+ 
+.statistique .chiffre {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a6b3c;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+ 
+.statistique .libelle {
+  display: block;
+  font-size: 1rem;
+  color: #555555;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.statistique .libelle {
+  opacity: 0.9;
+}   
