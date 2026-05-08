@@ -1,0 +1,29 @@
+.stat-reseau {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  flex: 1 1 140px;
+  background: white;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  border-top: 4px solid #0a6e31;
+  text-align: center;
+}
+
+.stat-valeur {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #0a6e31;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: #7f8c8d;
+  margin-top: 6px;
+  font-weight: 600;
+}
