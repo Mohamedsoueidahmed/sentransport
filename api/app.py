@@ -34,3 +34,57 @@ def get_ligne(ligne_id):
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
+
+
+@app.route("/arrets")
+def get_arrets():
+    tous_les_arrets = set()
+    for ligne in lignes:
+        for arret in ligne["listeArrets"]:
+            tous_les_arrets.add(arret)
+    return jsonify({
+        "total": len(tous_les_arrets),
+        "arrets": sorted(list(tous_les_arrets))  
+    })
+
+
+
+@app.route("/stats")
+def get_stats():
+    nombre_lignes = len(lignes)
+    total_arrets = sum(l["arrets"] for l in lignes)
+    ligne_max = max(lignes, key=lambda l: l["arrets"])
+    return jsonify({
+        "nombre_lignes": nombre_lignes,
+        "total_arrets": total_arrets,
+        "ligne_plus_darrets": {
+            "numero": ligne_max["numero"],
+            "depart": ligne_max["depart"],
+            "arrivee": ligne_max["arrivee"],
+            "arrets": ligne_max["arrets"]
+        }
+    })
+
+
+
+
+@app.route("/lignes/recherche")
+def recherche_lignes():
+    q = request.args.get("q", "").lower()
+    if not q:
+        return jsonify({"erreur": "Parametre q manquant. Exemple: /lignes/recherche?q=Pikine"}), 400
+ 
+    resultats = [
+        l for l in lignes
+        if q in l["depart"].lower() or q in l["arrivee"].lower()
+    ]
+ 
+    return jsonify({
+        "query": q,
+        "total": len(resultats),
+        "resultats": resultats
+    })
+ 
+ 
+if __name__ == "__main__":
+    app.run(debug=True, port=5000)
